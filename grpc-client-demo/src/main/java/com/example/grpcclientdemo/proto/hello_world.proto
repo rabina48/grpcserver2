@@ -1,0 +1,24 @@
+// Unary connection
+// proto file is required for both client and server side to communicate each other.
+
+syntax = "proto3";
+option java_package = "com.stubspython";
+option java_multiple_files = true;
+
+package helloworld;
+
+
+service HelloWorldService {
+  rpc SayHello(HelloRequest) returns (HelloResponse) {}
+}
+
+message HelloRequest {
+  string req_msg = 2; // number must be unique
+}
+
+message HelloResponse {
+  string res_msg = 2;
+}
+
+// Follow the command for generate codes
+// python -m grpc_tools.protoc -I./protos --python_out=. --pyi_out=. --grpc_python_out=. ./protos/hello_world.proto
